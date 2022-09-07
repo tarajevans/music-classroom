@@ -1,5 +1,4 @@
 const { User } = require("../models");
-
 const usersController = {
   loadAllUsersPage: (req, res) => {
     User.findAll({
@@ -76,24 +75,17 @@ const usersController = {
   },
 
   createUser: (req, res) => {
-     User.create({
-      username: req.body.Username,
-      password: req.body.password[0],
-      email: req.body.email,
-      bio: req.body.bio
-  })
-    .then(dbUserData => {
-      // req.session.save(() => {
-      //   req.session.user_id = dbUserData.id;
-      //   req.session.username = dbUserData.username;
-      //   req.session.loggedIn = true;
-      res.render('blog');
-        //res.json(dbUserData);
+    // expects {username: 'Lernantino', password: 'password1234'}
+    User.create({
+      username: req.body.username,
+      password: req.body.password,
+    })
+      .then((dbUserData) => {
       })
-        .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
   },
 
   loadLoginPage: (req, res) => {
