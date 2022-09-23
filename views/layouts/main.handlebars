@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="../styles/css.css">
     <title>Music Weekly</title>
   </head>
@@ -20,6 +21,8 @@
           <col>
             <nav>
               <ul>
+                {{#if loggedIn}}
+
                 <li>
                   <a href="/blog">Blog</a>
                 </li>
@@ -27,8 +30,16 @@
                   <a href="/classroom">Classroom</a>
                 </li>
                 <li>
-                  <a href="/api/musicians">Musicians</a>
+                  <a href="/musicians">Musicians</a>
                 </li>
+                    <li>
+                        <a id="logout">Log Out</a>
+                    </li>
+                {{else}}
+                    <li>
+                        <a href="/login"></a>
+                    </li>
+                {{/if}}
               </ul>
             </nav>
           <col>
@@ -38,7 +49,10 @@
   <main>
     {{{body}}}
   </main>
-  
+
   <footer>
   </footer>
+    {{#if loggedIn}}
+        <script src="/javascript/logout.js"></script>
+    {{/if}}
 </html>

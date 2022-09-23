@@ -1,4 +1,5 @@
-const { Post, User } = require("../models");
+const { Post, Users, Comment } = require("../models");
+const helpers = require("../utils/helpers");
 const postController = {
   loadAllPostsPage: (req, res) => {
     console.log("======================");
@@ -8,7 +9,7 @@ const postController = {
       //Join the user tables
       include: [
         {
-          model: User,
+          model: Users,
           attributes: ["username"],
         },
       ],
@@ -21,12 +22,25 @@ const postController = {
   },
 
   createPost: (req, res) => {
+    console.log(">>>>>FILE: " + req.file);
     Post.create({
       title: req.body.title,
-      post_url: req.body.post_url,
-      user_id: req.body.user_id,
+      content_txt: req.body.content_txt,
+
+      attached_file: req.body.attached_file,
+      user_id: req.session.user_id,
+      type: req.body.type
     })
-      .then((dbPostData) => res.json(dbPostData))
+      .then((dbPostData) => {
+        //res.json(dbPostData);
+        if(req.body.type === "blog"){
+          res.redirect("/blog");
+        }
+        else if(req.body.type === "challenge"){
+          res.redirect("/classroom");
+        }
+
+      })
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
@@ -36,18 +50,23 @@ const postController = {
   loadSinglePostPage: (req, res) => {
     Post.findByPk(req.params.id, {
       include: [
-        User,
+        Users,
         {
           model: Comment,
-          include: [User],
+          include: [Users],
         },
       ],
     })
       .then((dbPostData) => {
         if (dbPostData) {
           const post = dbPostData.get({ plain: true });
-
-          res.render("single-post", { post });
+          console.log(">>>>>FOUND POST.comments: " + JSON.stringify(post.comments));
+          //loggedIn is sent because it is used by main.handlebars
+          res.render("single-post", {
+            post,
+            loggedIn: (req.session.loggedIn ? true : false),
+            helpers,
+          });
         } else {
           res.status(404).end();
         }

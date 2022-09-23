@@ -96,7 +96,7 @@ footer div {
 }
 
 footer a {
-  color: var(--secondary-colo);
+  color: var(--secondary-color);
 }
 /* END FOOTER STYLES */
 
@@ -111,11 +111,12 @@ footer a {
   align-items: flex-start;
   background-attachment: fixed;
   background-position: 80%;
+ 
 }
 
 .hero-intro {
   border: 3px solid var(--secondary-color);
-  background-color: rgba(252, 226, 56, 0.834);
+  background-color: rgba(252, 226, 56, 0.905);
   padding: 20px;
   font-size: 1.5ww;
   font-weight: bold;
@@ -132,7 +133,7 @@ footer a {
 
 .hero-form {
   border: 3px solid var(--secondary-color);
-  background-color: rgba(252, 226, 56, 0.811);
+  background-color: rgba(252, 226, 56, 0.905);
   padding: 20px;
   font-size: 1.5ww;
   font-weight: bold;
@@ -191,7 +192,7 @@ footer a {
 
 .blog {
   border: 3px solid var(--secondary-color);
-  background-color: rgba(252, 226, 56, 0.834);
+  background-color: rgba(252, 226, 56, 0.905);
   padding: 20px;
   font-size: 1.5ww;
   font-weight: bold;
@@ -200,21 +201,10 @@ footer a {
   margin: 3.5%;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  justify-content: center;
+
 }
 
-.blog button {
-  color: var(--primary-color);
-  background-color: var(--secondary-color);
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 10px;
-  float: right;
-} 
-
-.blog button:hover {
-  background-color:var(--quaternary-color);  
-}
 /* HERO STYLES END */
 
 /* WHAT WE DO STYLES */
@@ -280,4 +270,54 @@ footer a {
     .intro p {
     width: 100%;
   }
+}
+
+/* Priya's styles */
+.challenges a:visited{
+  /*color: black;*/
+color: white;
+}
+
+.comments {
+  /*color: black;*/
+}
+
+.priya-hero {
+  background-image: url('../images/Digital_Music_Background.png');
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  background-attachment: fixed;
+  background-position: 80%;
+  flex-direction: column;
+  align-content: center;
+}
+
+.priya-hero-form {
+  border: 3px solid var(--secondary-color);
+  background-color: rgba(252, 226, 56, 0.811);
+  padding: 20px;
+  font-size: 1.5ww;
+  font-weight: bold;
+  color: var(--quinary-color);
+  margin: 3.5%;
+  width: 40%;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.priya-hero-form button {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  float: right;
+}
+
+.priya-hero-form button:hover {
+  background-color:var(--quaternary-color);  
 }

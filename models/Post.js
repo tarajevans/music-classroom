@@ -16,16 +16,17 @@ Post.init(
       allowNull: false,
     },
     content_txt: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
-      validate: {
-        isURL: true,
-      },
     },
-    Attached_type: {
+    attached_file: {
       type: DataTypes.STRING,
       allowNull: true,
     },
+      type: {
+        type: DataTypes.STRING,
+          allowNull: false,
+      },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
